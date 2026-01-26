@@ -1,5 +1,16 @@
 package main
 
+import (
+	"time"
+
+	"github.com/tragic-cmd/pokedexcli/internal/pokeapi"
+)
+
 func main() {
-    StartRepl()
+	pokeClient := pokeapi.NewClient(5*time.Second, time.Minute*5)
+	cfg := &config{
+		pokeapiClient: pokeClient,
+	}
+
+	startRepl(cfg)
 }
